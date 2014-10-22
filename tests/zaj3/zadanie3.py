@@ -4,7 +4,7 @@ import csv
 import unittest
 import pathlib
 from operator import itemgetter
-from solutions.zaj3.zadanie3 import iter_over_contents
+from tasks.zaj3.zadanie3 import iter_over_contents
 import tempfile
 import hashlib
 import os
@@ -39,7 +39,7 @@ class TestClass(unittest.TestCase):
         super().setUpClass()
         generate_ngrams = cls.TESTED_MODULE.generate_ngrams
         if not cls.SHORT:
-            contents = iter_over_contents(pathlib.Path(cls.DATA_DIR, "zaj3", "enwiki-20140903-pages-articles_part_0.xml.bz2"))
+            contents = iter_over_contents(str(pathlib.Path(cls.DATA_DIR, "zaj3", "enwiki-20140903-pages-articles_part_0.xml.bz2")))
             cls.ngrams = generate_ngrams(contents, 7)
 
     def setUp(self):
