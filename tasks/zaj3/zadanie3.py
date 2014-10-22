@@ -95,7 +95,7 @@ def generate_ngrams(contents, ngram_len=7, nmax=None):
 	d = defaultdict(lambda: 0)
 	
 	for j, (title, cont) in enumerate(contents):
-		for i in range(0, len(cont)- ngram_len):
+		for i in range(0, 1 + len(cont) - ngram_len):
 			d[cont[i:i+ngram_len]] += 1
 		if nmax and j > nmax:
 			break
@@ -114,6 +114,8 @@ def save_ngrams(out_file, contents):
 	:param dict ngram_dict: Słownik z n-gramami
 	:param str out_file: Plik do którego n-gramy zostaną zapisane
 	"""
+	
+	import csv
 	
 	with open(out_file, 'w') as f:
 		w = csv.writer(f, dialect=csv.unix_dialect)
