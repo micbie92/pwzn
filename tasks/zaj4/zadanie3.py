@@ -77,29 +77,7 @@ class Integrator(object):
         :return:
         """
 
-        parts = math.ceil(num_evaluations/self.level)
 
-        new_evaluations = int(parts * (self.level-1))
-
-        start, stop = func_range
-
-        grid = np.linspace(start, stop, new_evaluations, endpoint=False)
-
-        value_grid = np.zeros((parts, self.level))
-
-        value_grid[:, :-1] = grid.reshape((parts, self.level-1))
-        value_grid[:-1, -1] = value_grid[1:, 0]
-        value_grid.flat[-1] = stop
-
-        # print(value_grid)
-
-        value_grid = func(value_grid)
-
-        coefficients = np.asanyarray(self.PARAMS[self.level], dtype=float)
-
-        res = np.sum(value_grid * coefficients[np.newaxis, :])
-
-        return res / np.sum(coefficients) * (stop - start) / parts
 
 if __name__ == "__main__":
 
