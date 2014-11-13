@@ -28,7 +28,19 @@ def calculate_neighbours(board):
 
     Podpowiedź II: Proszę uważać na komówki na bokach i rogach planszy.
     """
-
+    m, n = board.shape
+    board2 = np.zeros((m+2, n+2), dtype=int)
+    board2[1:m+1, 1:n+1] = board.astype(int)
+    wynik = np.zeros(board.shape, dtype=np.int)
+    ones = np.ones(board.shape)
+#    print(board)
+#    print(board2[2:m+2, 1: n+1])
+    for i, j in [ (1,0), (-1,0), (0,1), (0,-1), (1,1), (1,-1), (-1,1), (-1,-1) ]:
+        wynik += (ones * board2[1+i:m+1+i, 1+j:n+1+j]).astype(int)
+#    print(board)
+#    print(wynik)
+#    print()
+    return wynik
 
 def iterate(board):
 
@@ -49,3 +61,28 @@ def iterate(board):
     oznacza to że dana komórka jest obsadzona
 
     """
+    from numpy import logical_and as land, logical_or as lor, logical_not as lnot
+#    print(board)
+    board = board.astype(np.bool)
+    neigh = calculate_neighbours(board)
+#    print(neigh)
+    ozywa = land(board == False, neigh == 3)
+    umiera = lnot(land( board == True, lor( neigh < 2, neigh > 3) ))
+#    print(ozywa)
+#    print(umiera)    
+    board2 = land(lor(board, ozywa), umiera)
+    return(board2)    
+if __name__=="__main__":
+    t=(np.random.randint(0, 10, (45,120)) > 5).astype(int)
+#    calculate_neighbours(np.random.randint(0, 2,(10,10)))
+#    iterate(t)
+
+    import os
+    import time
+    while(True):
+        os.system('clear')
+        t2 = [ [ '#' if x else ' ' for x in y ] for y in t]
+        t2 = '\n'.join( [ ''.join(x) for x in t2 ] )
+        print(t2)
+        t = iterate(t)
+        time.sleep(0.1)
