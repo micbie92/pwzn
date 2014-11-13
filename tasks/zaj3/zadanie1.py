@@ -27,6 +27,7 @@ def load_data(path):
 
 
 def suggester(input, data):
+
 	"""
 	Funkcja która sugeruje następną literę ciągu ``input`` na podstawie n-gramów
 	zawartych w ``data``.
@@ -101,7 +102,7 @@ def suggester(input, data):
 	for x, y in d.items():
 		d[x] = y/Nsum
 
-	return sorted(d.items(), key = lambda x: x[1], reverse=True)
+	return sorted(d.items(), key = lambda x: (x[1], x[0]), reverse=True)
 
 if __name__=="__main__":
 	import sys

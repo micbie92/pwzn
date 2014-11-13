@@ -105,13 +105,12 @@ def generate_ngrams(contents, ngram_len=7, nmax=None):
 
 def save_ngrams(out_file, contents):
 	"""
-	Funkcja działa tak jak `generate_ngrams` ale zapisuje wyniki do pliku
-	out_file. Może wykorzystywać generate_ngrams!
+	Funkcja która (tylko) zapisuje n-gramy do pliku.
 
 	Plik ma format csv w dialekcie ``csv.unix_dialect`` i jest posortowany
 	względem zawartości n-grama.
 
-	:param dict ngram_dict: Słownik z n-gramami
+	:param dict contents: Słownik z n-gramami
 	:param str out_file: Plik do którego n-gramy zostaną zapisane
 	"""
 	
