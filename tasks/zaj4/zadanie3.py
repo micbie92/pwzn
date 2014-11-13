@@ -73,10 +73,15 @@ class Integrator(object):
 
         :param callable func: Funkcja którą całkujemy
         :param tuple[int] func_range: Krotka zawierająca lewą i prawą granicę całkowania
-        :param in tnum_evaluations:
+        :param int num_evaluations:
         :return:
         """
-
+        a,b = func_range
+        n = int((num_evaluations+0.5)//self.level + 1)
+        N = n*self.level
+        
+        x = np.arange(a, b, N)
+        
 
 
 if __name__ == "__main__":
