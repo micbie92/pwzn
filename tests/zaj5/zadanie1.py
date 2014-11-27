@@ -27,7 +27,7 @@ class TestClass(unittest.TestCase):
         if not cls.SHORT:
             cls.exc = None
             try:
-                cls.data = load_data(str(pathlib.Path(cls.DATA_DIR, "zaj4", "enwiki-20140903-pages-articles_part_1.xmlascii.bin")))
+                cls.data = load_data(str(pathlib.Path(cls.DATA_DIR, "zaj5", "enwiki-20140903-pages-articles_part_1.xmlascii.bin")))
             except Exception as e:
                 cls.data = None
                 cls.exc = e
@@ -100,4 +100,4 @@ class TestClass(unittest.TestCase):
             res = self.sugester('in exc', self.data)
             self.__assert_results(self.SUG_4_OUT, res)
 
-    SUG_4_OUT = [('h', 0.5969180859691808), ('e', 0.34144363341443634), ('l', 0.025952960259529603), ('a', 0.014598540145985401), ('i', 0.008921330089213302), ('r', 0.006488240064882401), ('u', 0.0024330900243309003), ('o', 0.0024330900243309003), (' ', 0.0008110300081103001)]
+    SUG_4_OUT = [('h', 0.5969180859691808), ('e', 0.34144363341443634), ('l', 0.025952960259529603), ('a', 0.014598540145985401), ('i', 0.008921330089213302), ('r', 0.006488240064882401)]
