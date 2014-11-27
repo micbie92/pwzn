@@ -29,7 +29,7 @@ def get_center_of_mass(event_id, data):
 	:return: Macierz 3 x 1
 	"""
 	
-	print(data)
+
 	data = data[data['event_id']==event_id]
 	return (data['particle_mass'][:,np.newaxis] * data['particle_position']).sum(axis=0) / (data['particle_mass']).sum()
 
