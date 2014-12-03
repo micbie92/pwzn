@@ -85,4 +85,4 @@ if __name__=="__main__":
         t2 = '\n'.join( [ ''.join(x) for x in t2 ] )
         print(t2)
         t = iterate(t)
-        time.sleep(0.1)
+        time.sleep(0.2)
