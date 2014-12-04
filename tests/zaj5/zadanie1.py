@@ -62,8 +62,8 @@ class TestClass(unittest.TestCase):
                 self.__convert(res), self.__convert(expected))
 
     def test_sugester_handmade(self):
-        data = [["Kote", 1]]
-        self.__check_result('Kot', data, [['e', 1.0]])
+        data = [["Vitalis", 1]]
+        self.__check_result('Vitali', data, [['s', 1.0]])
 
     def test_load_data(self):
         if self.SHORT:

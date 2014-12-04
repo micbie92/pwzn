@@ -47,7 +47,7 @@ def get_energy_spectrum(event_id, data, left, right, bins):
 	
 	data = data[data['event_id']==event_id]
 
-	en = data['particle_mass']/2*(data['particle_velocity'][:,0]**2 + data['particle_velocity'][:,1]**2 + data['particle_velocity'][:,2]**2)
+	en = data['particle_mass']/2*np.sqrt(data['particle_velocity'][:,0]**2 + data['particle_velocity'][:,1]**2 + data['particle_velocity'][:,2]**2)
 	return (np.histogram(en, range=(left, right), bins=bins)[0])
 	
 
